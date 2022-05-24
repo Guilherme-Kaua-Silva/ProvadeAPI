@@ -1,10 +1,11 @@
-function CorPrimaria(cor) {
-    let x = true;
-     if(cor == "azul" || cor == "vermelho" || cor == "amarelo")
-      x = true;
-      else{
-          x = false;
-      }
-     return x;
- }
- console.log(CorPrimaria(azul));
+function ingressoscinemas (qtdi, qtdm, diasemana, nacionalidade) {
+    let a = 0;
+    if(diasemana="quarta")
+       a=14.25 * (qtdi+qtdm);
+
+   if(nacionalidade="brasileira")
+       a=14.25 * (qtdi+qtdm);
+   else 
+       a= 28.5 * (qtdi, qtdm);
+   return a;
+}
