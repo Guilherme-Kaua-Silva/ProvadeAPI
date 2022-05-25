@@ -35,22 +35,37 @@ export function media( n1,n2,n3){
      return x;
  }
 
- export function ingressocinemas (qtdi, qtdm, diasemana, nacionalidade) {
+ export function ingresso(qtdInteira, qtdMeia, diaSemana, nacionalidade) { 
+    if (nacionalidade.toLowerCase() == 'brasileira')  
+        return (qtdInteira+ qtdMeia) * 5;
 
-    let preco = qtdi * 28.5;
+    else if (diaSemana.toLowerCase() == 'quarta') 
+        return (qtdInteira + qtdMeia) * 14.25;
 
-    if(diasemana == "quarta"){
-        preco = (qtdi * 28.5) / 2;
+    else
+        return (qtdInteira * 28.5) + (qtdMeia * 14.25);
 
-    }else if(qtdm){
-        preco = (qtdm * 28.5) / 2;
+}
     
-        if(nacionalidade == "brasileira"){
-            preco = 5;
-        }
+ 
 
-    }
-    return preco;
+ export function freq (frase , n){
+     let c = 0;
+     for (let letra of frase){
+         if (letra == n ){
+             c++;
+         }
+     }
+     return c;
  }
 
+ export function maoirnumero(numeros){
+     let maior = Number.MIN_VALUE;
+     for(let item of nummeros){
+         if (itens > maior ) {
+             maior = item;
+         }
+     }
+     return maior;
+ }
  

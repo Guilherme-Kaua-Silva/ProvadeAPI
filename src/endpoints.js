@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { somar,dobro,media,temperatura, corprimaria } from './services.js'
+import { somar,dobro,media,temperatura, corprimaria, freq } from './services.js'
 
 const server = Router();
 
@@ -108,23 +108,51 @@ server.get('/corprimaria', (req, resp) => {
 })
 server.post('/ingressocinemas', (req, resp) => {
     try{
-    const { valores: {a,b,c,d } } = req.body;
+    const { qtdi,qtfm,dia,nacionalidade } = req.body;
     
-    const x = ingressocinemas(a, b, c,d);
+    const total = ingresso(qtdi,qtfm,dia,nacionalidade);
 
     
     resp.send ({
-        ingressocinemas: x
+        total:total
     })
 }catch(err){
-    resp.status(404).send ({
+    resp.send ({
         erro: err.message
     })
 }
 
 })
+server.get('/freq/:frase/:n' , (req,resp) =>{
+    try {
+        const { frase , n} = req.params;
 
+        const x = freq( frase , n);
 
+        resp.send({
+            x:x
+        })
+    } catch(err) {
+        resp.send ({
+            erro: err.message
+        })
+    }
+
+})
+
+server.post('/maiornumero', (req,resp) => {
+    try {
+        const numeros = req.body;
+
+        const maior = maiornumero(numeros);
+
+        resp.send({
+            maior:maior
+        })
+    } catch (err) {
+            erro : err.message
+    }
+})
 
 
 
